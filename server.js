@@ -27,6 +27,11 @@ if (dbUrl) {
     ssl: dbUrl.includes('sslmode=disable') ? false : { rejectUnauthorized: false }
   });
   
+  // Handle unexpected errors on idle clients to prevent crashing the server
+  pool.on('error', (err) => {
+    console.error('Unexpected error on idle database client:', err.message);
+  });
+  
   // Test connection and run table initialization
   pool.query('SELECT NOW()')
     .then(async () => {
@@ -77,9 +82,9 @@ function generateEmailHtml(lead) {
   }[tema] || tema;
 
   const jornadaLegible = {
-    'part-time': 'Part-Time (Fin de Semana)',
-    'part-time-semana': 'Part-Time (Semana)',
-    'full-time': 'Full-Time (45/40 hrs)'
+    'full-time': 'Full Time',
+    'media-jornada': 'Media Jornada',
+    'part-time': 'Part Time'
   }[jornada] || jornada;
 
   return `<!DOCTYPE html>

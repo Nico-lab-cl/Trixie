@@ -1191,6 +1191,34 @@ a {
   min-width: 100px;
 }
 
+.wizard-download-manual {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+.wizard-download-manual a.btn {
+  background: transparent;
+  color: var(--color-accent);
+  border: 1px dashed var(--color-accent);
+  font-size: 0.85rem;
+  padding: 8px 16px;
+  min-height: 38px;
+  box-shadow: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.wizard-download-manual a.btn:hover,
+.wizard-download-manual a.btn:focus {
+  background: rgba(163, 230, 53, 0.1);
+  border-style: solid;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-accent);
+}
+
 /* ==========================================================================
    FEEDBACK & SUGGESTIONS SECTION
    ========================================================================== */
