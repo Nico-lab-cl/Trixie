@@ -275,8 +275,8 @@ a {
    ========================================================================== */
 
 .hero-flyer-section {
-  background-color: #FAF4EB; /* Color crema suave que combina con el fondo de la foto de Trixie */
-  padding: 40px 0 0 0; /* Sin padding inferior para que la barra de abajo quede al ras */
+  background-color: #f3e4cf; /* Color piel/durazno del volante y foto */
+  padding: 60px 0 0 0; /* Padding superior para balancear el contenido */
   position: relative;
   overflow: hidden;
 }
@@ -291,7 +291,7 @@ a {
   display: grid;
   grid-template-columns: 1fr;
   gap: 30px;
-  align-items: center;
+  align-items: end; /* Alinear abajo para que apoye en la ola */
 }
 
 /* Columna Izquierda: Textos y Pilares */
@@ -352,7 +352,7 @@ a {
   transform-origin: left bottom;
   position: relative;
   z-index: 5;
-  text-shadow: 2px 2px 0px #FAF4EB; /* Contraste con el fondo */
+  text-shadow: 2px 2px 0px #f3e4cf; /* Contraste con el fondo piel */
 }
 
 .flyer-last-name {
@@ -388,18 +388,19 @@ a {
   color: #052c16;
   letter-spacing: 0.05em;
   position: relative;
-  padding-bottom: 12px;
+  padding-bottom: 16px;
+  display: inline-block;
 }
 
 .flyer-tagline::after {
   content: "";
   position: absolute;
-  bottom: 0;
+  bottom: -6px;
   left: 0;
-  width: 60px;
-  height: 3px;
+  width: 90%;
+  height: 6px;
   background-color: #65a30d;
-  border-radius: var(--radius-round);
+  border-radius: 50% / 0 0 100% 100%; /* Curva de trazo orgánico */
 }
 
 /* Columna Derecha: Imagen de Trixie */
@@ -407,6 +408,7 @@ a {
   display: flex;
   justify-content: center;
   align-items: flex-end;
+  margin-bottom: -1px; /* Solape milimétrico con la ola verde */
 }
 
 .flyer-image-container {
@@ -422,7 +424,6 @@ a {
   height: auto;
   display: block;
   object-fit: cover;
-  /* El modo multiply hace que el fondo de la imagen se funda perfectamente con el fondo crema del hero */
   mix-blend-mode: multiply;
 }
 
@@ -430,13 +431,29 @@ a {
 .hero-flyer-bottom {
   background-color: #052c16; /* Verde oscuro del fondo del volante */
   color: white;
-  padding: 30px 0;
+  padding: 15px 0 30px 0; /* Padding regulado, el SVG da la altura */
   position: relative;
   z-index: 10;
-  border-top-left-radius: 32px;
-  border-top-right-radius: 32px;
   box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.05);
-  margin-top: -10px; /* Leve solape para evitar separaciones raras */
+  margin-top: -1px;
+}
+
+/* Ola SVG que sobresale de la barra verde */
+.flyer-wave-wrapper {
+  position: absolute;
+  top: -65px; /* Flota hacia arriba sobre el fondo piel */
+  left: 0;
+  width: 100%;
+  height: 67px;
+  overflow: hidden;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.flyer-wave-wrapper svg {
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 
 .flyer-bottom-grid {
@@ -1394,6 +1411,12 @@ textarea {
   .hero-flyer-grid {
     grid-template-columns: 1.1fr 0.9fr;
     gap: 50px;
+    align-items: end;
+  }
+  
+  .flyer-wave-wrapper {
+    top: -95px;
+    height: 97px;
   }
   
   .flyer-first-name {
