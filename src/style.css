@@ -275,7 +275,7 @@ a {
    ========================================================================== */
 
 .hero-flyer-section {
-  background-color: #f3e4cf; /* Color piel/durazno del volante y foto */
+  background-color: #eed9ba; /* Color piel/durazno exacto del volante y foto */
   padding: 60px 0 0 0; /* Padding superior para balancear el contenido */
   position: relative;
   overflow: hidden;
@@ -352,7 +352,7 @@ a {
   transform-origin: left bottom;
   position: relative;
   z-index: 5;
-  text-shadow: 2px 2px 0px #f3e4cf; /* Contraste con el fondo piel */
+  text-shadow: 2px 2px 0px #eed9ba; /* Contraste con el fondo piel */
 }
 
 .flyer-last-name {
