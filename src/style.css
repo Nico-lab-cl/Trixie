@@ -12,7 +12,7 @@
   --color-accent-dark: #84cc16;   /* Verde lima oscuro */
   --color-accent-contrast: #051d11; /* Texto oscuro sobre lima */
   
-  --color-bg-light: #f4f7f5;      /* Gris claro para fondo */
+  --color-bg-light: #eed9ba;      /* Color de fondo piel/durazno global del volante y foto */
   --color-text-dark: #1f2937;     /* Gris muy oscuro para texto principal */
   --color-text-muted: #4b5563;    /* Gris medio para descripciones */
   --color-text-white: #ffffff;
@@ -563,7 +563,7 @@ a {
    ========================================================================== */
 
 .highlights-section {
-  background-color: var(--color-text-white);
+  background-color: var(--color-bg-light);
   padding: 30px 0;
   box-shadow: var(--shadow-sm);
   position: relative;
@@ -1117,7 +1117,7 @@ a {
 
 .feedback-section {
   padding: 70px 0;
-  background-color: var(--color-text-white);
+  background-color: var(--color-bg-light);
 }
 
 .feedback-container {
@@ -1162,7 +1162,7 @@ a {
 
 /* Card del Formulario */
 .feedback-form-card {
-  background-color: var(--color-bg-light);
+  background-color: var(--color-text-white);
   border-radius: var(--radius-lg);
   padding: 24px;
   position: relative;
