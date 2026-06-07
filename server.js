@@ -296,7 +296,7 @@ function generateEmailHtml(lead) {
           <h3>Resumen de tu sugerencia</h3>
           <div class="summary-item"><strong>Nombre:</strong> ${first_name} ${last_name}</div>
           <div class="summary-item"><strong>Jornada Laboral:</strong> ${jornadaLegible}</div>
-          <div class="summary-item"><strong>Tema Prioritario:</strong> ${temaLegible}</div>
+          <div class="summary-item"><strong>Tema de Preocupación:</strong> ${temaLegible}</div>
           <div class="summary-item" style="margin-top: 10px;">
             <strong>Sugerencia o Necesidad:</strong><br>
             <span style="font-style: italic; color: #6b7280; display: block; margin-top: 5px;">"${sugerencia}"</span>
