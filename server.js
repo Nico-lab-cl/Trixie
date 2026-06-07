@@ -105,7 +105,7 @@ app.post('/api/leads', async (req, res) => {
     }
 
     // Forward to Webhook if defined
-    const webhookUrl = process.env.WEBHOOK_URL;
+    const webhookUrl = process.env.WEBHOOK_URL || 'https://n8n-n8n.db8enk.easypanel.host/webhook/daa3bade-8682-4d77-8930-36d27ce08ca0';
     if (webhookUrl) {
       try {
         console.log(`Forwarding lead data to webhook: ${webhookUrl}`);
