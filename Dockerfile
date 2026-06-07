@@ -13,6 +13,6 @@ COPY package*.json ./
 RUN npm ci --only=production
 COPY --from=build /app/dist ./dist
 COPY server.js ./
-EXPOSE 3000
-ENV PORT=3000
+EXPOSE 80
+ENV PORT=80
 CMD ["node", "server.js"]
