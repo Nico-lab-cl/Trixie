@@ -123,49 +123,101 @@ function initFeedbackForm() {
   const form = document.getElementById('proposal-form');
   const successOverlay = document.getElementById('form-success');
   const btnClose = document.getElementById('btn-success-close');
+  const successTitle = document.getElementById('success-title');
+  const successMessage = document.getElementById('success-message');
 
   if (!form) return;
 
-  form.addEventListener('submit', (e) => {
+  const submitBtn = form.querySelector('button[type="submit"]');
+  const originalBtnText = submitBtn ? submitBtn.textContent : 'Enviar Sugerencia a Trixie';
+
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
     // Obtener valores del formulario
-    const name = document.getElementById('form-name').value.trim() || 'Anónimo';
+    const firstName = document.getElementById('form-firstname').value.trim();
+    const lastName = document.getElementById('form-lastname').value.trim();
+    const email = document.getElementById('form-email').value.trim();
+    const phone = document.getElementById('form-phone').value.trim();
     const shift = document.getElementById('form-shift').value;
     const topic = document.getElementById('form-topic').value;
     const message = document.getElementById('form-message').value.trim();
 
-    // Crear objeto de sugerencia
-    const suggestion = {
-      id: Date.now(),
-      name,
-      shift,
-      topic,
-      message,
-      date: new Date().toISOString()
+    const leadData = {
+      first_name: firstName,
+      last_name: lastName,
+      email,
+      phone,
+      jornada: shift,
+      tema: topic,
+      sugerencia: message
     };
 
-    // Obtener sugerencias anteriores de localStorage
-    let currentSuggestions = [];
-    try {
-      currentSuggestions = JSON.parse(localStorage.getItem('trixie_suggestions')) || [];
-    } catch (err) {
-      console.error('Error leyendo localStorage:', err);
+    // Deshabilitar botón e indicar carga
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Enviando...';
     }
 
-    // Agregar nueva sugerencia
-    currentSuggestions.push(suggestion);
-
-    // Guardar de vuelta en localStorage
     try {
-      localStorage.setItem('trixie_suggestions', JSON.stringify(currentSuggestions));
-    } catch (err) {
-      console.error('Error escribiendo en localStorage:', err);
-    }
+      const response = await fetch('/api/leads', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(leadData)
+      });
 
-    // Mostrar modal / overlay de éxito con animación
-    successOverlay.classList.remove('hidden');
-    successOverlay.style.animation = 'fadeIn 0.3s ease forwards';
+      if (!response.ok) {
+        const errData = await response.json();
+        throw new Error(errData.error || 'Error del servidor al registrar lead.');
+      }
+
+      const savedLead = await response.json();
+
+      // Guardar en localStorage como respaldo local
+      let currentSuggestions = [];
+      try {
+        currentSuggestions = JSON.parse(localStorage.getItem('trixie_suggestions')) || [];
+        currentSuggestions.push({
+          id: savedLead.id,
+          order_number: savedLead.order_number,
+          name: `${firstName} ${lastName}`,
+          shift,
+          topic,
+          message,
+          date: savedLead.created_at || new Date().toISOString()
+        });
+        localStorage.setItem('trixie_suggestions', JSON.stringify(currentSuggestions));
+      } catch (err) {
+        console.error('Error guardando en localStorage:', err);
+      }
+
+      // Actualizar modal de éxito de forma dinámica
+      if (successTitle) {
+        successTitle.textContent = `¡Muchas gracias, ${firstName}!`;
+      }
+      if (successMessage) {
+        successMessage.innerHTML = `Tu opinión se ha registrado de manera oficial.<br><br>` +
+          `Tu número de orden es: <strong style="color:#65a30d; font-size:1.15rem;">${savedLead.order_number}</strong>.<br><br>` +
+          `Te enviaremos la información de confirmación a tu correo: <strong>${email}</strong> ` +
+          `y un mensaje a tu número de teléfono: <strong>${phone}</strong>.`;
+      }
+
+      // Mostrar modal / overlay de éxito con animación
+      successOverlay.classList.remove('hidden');
+      successOverlay.style.animation = 'fadeIn 0.3s ease forwards';
+
+    } catch (err) {
+      console.error('Error al registrar lead:', err);
+      alert(`Lo sentimos, hubo un problema: ${err.message}`);
+    } finally {
+      // Reestablecer botón
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalBtnText;
+      }
+    }
   });
 
   // Cerrar overlay de éxito y resetear formulario

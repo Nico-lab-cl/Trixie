@@ -407,9 +407,26 @@
 
         <div class="feedback-form-card">
           <form id="proposal-form">
-            <div class="form-group">
-              <label for="form-name">Tu Nombre o Alias (Opcional)</label>
-              <input type="text" id="form-name" placeholder="Ej. Juan P. (o en blanco para anónimo)">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="form-firstname">Nombre</label>
+                <input type="text" id="form-firstname" placeholder="Ej. Juan" required>
+              </div>
+              <div class="form-group">
+                <label for="form-lastname">Apellido</label>
+                <input type="text" id="form-lastname" placeholder="Ej. Pérez" required>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="form-email">Correo Electrónico</label>
+                <input type="email" id="form-email" placeholder="Ej. juan.perez@email.com" required>
+              </div>
+              <div class="form-group">
+                <label for="form-phone">Número de Teléfono</label>
+                <input type="tel" id="form-phone" placeholder="Ej. +56912345678" required>
+              </div>
             </div>
 
             <div class="form-row">
@@ -451,9 +468,8 @@
           <div id="form-success" class="form-success-overlay hidden">
             <div class="success-card">
               <div class="success-icon">🎉</div>
-              <h3>¡Sugerencia Recibida!</h3>
-              <p>Tu opinión se ha registrado exitosamente. Trixie utilizará estas respuestas para armar la tabla de
-                prioridades para el próximo mes.</p>
+              <h3 id="success-title">¡Muchas Gracias!</h3>
+              <p id="success-message">Tu opinión se ha registrado exitosamente. Te llegará un correo con tu número de orden y un mensaje a tu número de teléfono.</p>
               <button class="btn btn-primary btn-sm" id="btn-success-close">Hacer otra propuesta</button>
             </div>
           </div>
