@@ -1752,6 +1752,62 @@ textarea {
   background-color: #000000;
 }
 
+.social-icon.coming-soon {
+  opacity: 0.45;
+  filter: grayscale(1);
+  cursor: not-allowed;
+  position: relative;
+}
+
+.social-icon.coming-soon:hover {
+  transform: none;
+  background-color: var(--color-bg-light);
+  color: var(--color-primary-dark);
+  box-shadow: none;
+}
+
+/* Tooltip 'Próximamente' */
+.social-icon.coming-soon::after {
+  content: "Próximamente";
+  position: absolute;
+  bottom: 125%;
+  left: 50%;
+  transform: translateX(-50%) translateY(5px);
+  background-color: #1f2937;
+  color: #ffffff;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  z-index: 10;
+}
+
+.social-icon.coming-soon::before {
+  content: "";
+  position: absolute;
+  bottom: 110%;
+  left: 50%;
+  transform: translateX(-50%) translateY(5px);
+  border-width: 5px;
+  border-style: solid;
+  border-color: #1f2937 transparent transparent transparent;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.2s ease;
+  z-index: 10;
+}
+
+.social-icon.coming-soon:hover::after,
+.social-icon.coming-soon:hover::before {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
 .source-tag {
   font-size: 0.75rem;
   font-style: italic;
