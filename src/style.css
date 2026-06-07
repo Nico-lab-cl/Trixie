@@ -276,22 +276,29 @@ a {
 
 .hero-flyer-section {
   background-color: #eed9ba; /* Color piel/durazno exacto del volante y foto */
-  padding: 20px 0 0 0; /* Padding superior reducido en móvil */
+  padding: 25px 0 0 0; /* Padding superior reducido en móvil */
   position: relative;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: calc(100vh - 38px);
+  min-height: calc(100svh - 38px);
 }
 
 /* Flyer Grid */
 .hero-flyer-container {
   max-width: 1100px;
   margin: 0 auto;
+  width: 100%;
 }
 
 .hero-flyer-grid {
   display: grid;
-  grid-template-columns: 1.15fr 0.85fr; /* Dos columnas en móvil */
-  gap: 12px;
+  grid-template-columns: 1.12fr 0.88fr; /* Dos columnas en móvil */
+  gap: 16px;
   align-items: center; /* Centrado vertical */
+  padding-bottom: 25px; /* Evita que la ola pise el texto en pantallas cortas */
 }
 
 /* Columna Izquierda: Textos y Pilares */
@@ -344,7 +351,7 @@ a {
 .flyer-first-name {
   display: block;
   font-family: 'Satisfy', cursive;
-  font-size: 3.2rem;
+  font-size: 3.5rem;
   line-height: 1;
   color: #65a30d; /* Firma manuscrita en verde claro */
   margin-bottom: -8px;
@@ -358,7 +365,7 @@ a {
 .flyer-last-name {
   display: block;
   font-family: var(--font-family-title);
-  font-size: 2.8rem;
+  font-size: 3.1rem;
   font-weight: 900;
   line-height: 0.9;
   color: #052c16;
@@ -413,7 +420,7 @@ a {
 
 .flyer-image-container {
   width: 100%;
-  max-width: 170px;
+  max-width: 185px;
   background-color: #ffffff;
   padding: 8px 8px 20px 8px; /* polaroid style: thicker bottom padding */
   border-radius: 8px;
@@ -441,7 +448,7 @@ a {
 .hero-flyer-bottom {
   background-color: #052c16; /* Verde oscuro del fondo del volante */
   color: white;
-  padding: 10px 0 20px 0; /* Padding regulado, el SVG da la altura */
+  padding: 15px 0 25px 0; /* Padding regulado, el SVG da la altura */
   position: relative;
   z-index: 10;
   box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.05);
@@ -502,10 +509,10 @@ a {
 
 .flyer-bottom-slogan {
   font-family: 'Caveat', cursive;
-  font-size: 1.35rem;
+  font-size: 1.45rem;
   text-align: center;
   color: var(--color-accent);
-  margin-top: 5px;
+  margin-top: 8px;
   letter-spacing: 0.02em;
 }
 
@@ -1465,6 +1472,8 @@ textarea {
 @media (min-width: 768px) {
   .hero-flyer-section {
     padding: 60px 0 0 0;
+    display: block;
+    min-height: auto;
   }
 
   /* Cambio en Hero Flyer Layout */
