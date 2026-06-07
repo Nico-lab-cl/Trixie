@@ -301,16 +301,17 @@ a {
 /* Flyer Grid */
 .hero-flyer-container {
   max-width: 1100px;
-  margin: 0 auto;
+  margin: auto auto; /* Centrar verticalmente en flex móvil */
   width: 100%;
 }
 
 .hero-flyer-grid {
   display: grid;
   grid-template-columns: 1.12fr 0.88fr; /* Dos columnas en móvil */
-  gap: 16px;
+  gap: 18px;
   align-items: center; /* Centrado vertical */
-  padding-bottom: 25px; /* Evita que la ola pise el texto en pantallas cortas */
+  padding-top: 15px;
+  padding-bottom: 35px; /* Evita que la ola pise el texto en pantallas cortas */
 }
 
 /* Columna Izquierda: Textos y Pilares */
@@ -333,7 +334,7 @@ a {
   display: flex;
   align-items: center;
   gap: 4px;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   font-weight: 800;
   color: #052c16; /* Verde oscuro */
   letter-spacing: 0.05em;
@@ -363,7 +364,7 @@ a {
 .flyer-first-name {
   display: block;
   font-family: 'Satisfy', cursive;
-  font-size: 3.8rem;
+  font-size: 4.2rem;
   line-height: 1;
   color: #65a30d; /* Firma manuscrita en verde claro */
   margin-bottom: -8px;
@@ -377,7 +378,7 @@ a {
 .flyer-last-name {
   display: block;
   font-family: var(--font-family-title);
-  font-size: 3.4rem;
+  font-size: 3.8rem;
   font-weight: 900;
   line-height: 0.9;
   color: #052c16;
@@ -391,7 +392,7 @@ a {
   color: white;
   font-family: var(--font-family-title);
   font-weight: 800;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   padding: 4px 10px;
   border-radius: var(--radius-sm);
   letter-spacing: 0.05em;
@@ -403,7 +404,7 @@ a {
 .flyer-tagline {
   font-family: var(--font-family-title);
   font-weight: 800;
-  font-size: 0.95rem;
+  font-size: 1.05rem;
   color: #052c16;
   letter-spacing: 0.05em;
   position: relative;
@@ -432,7 +433,7 @@ a {
 
 .flyer-image-container {
   width: 100%;
-  max-width: 205px;
+  max-width: 225px;
   background-color: #ffffff;
   padding: 8px 8px 20px 8px; /* polaroid style: thicker bottom padding */
   border-radius: 8px;
