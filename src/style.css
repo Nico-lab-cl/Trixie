@@ -1766,9 +1766,9 @@ textarea {
   box-shadow: none;
 }
 
-/* Tooltip 'Próximamente' */
+/* Tooltip 'Coming Soon' */
 .social-icon.coming-soon::after {
-  content: "Próximamente";
+  content: "Coming Soon";
   position: absolute;
   bottom: 125%;
   left: 50%;
