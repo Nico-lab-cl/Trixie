@@ -1527,3 +1527,146 @@ textarea {
     font-size: 2rem;
   }
 }
+
+/* ==========================================================================
+   NUEVOS ESTILOS AGREGADOS (REDES SOCIALES, FUENTES Y FORMULARIO)
+   ========================================================================== */
+
+.social-networks-pilar {
+  margin-top: 16px;
+  margin-bottom: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.social-networks-title {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--color-primary-light);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.social-icons-wrapper {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.social-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background-color: var(--color-bg-light);
+  color: var(--color-primary-dark);
+  transition: all var(--transition-fast);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.social-icon svg {
+  width: 18px;
+  height: 18px;
+}
+
+.social-icon:hover {
+  transform: scale(1.1) translateY(-2px);
+  color: white;
+  box-shadow: var(--shadow-sm);
+}
+
+.social-icon.instagram:hover {
+  background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285ae5 90%);
+}
+
+.social-icon.whatsapp:hover {
+  background-color: #25d366;
+}
+
+.social-icon.facebook:hover {
+  background-color: #1877f2;
+}
+
+.social-icon.tiktok:hover {
+  background-color: #000000;
+}
+
+.source-tag {
+  font-size: 0.75rem;
+  font-style: italic;
+  color: var(--color-text-muted);
+  display: block;
+  margin-top: 6px;
+  margin-bottom: 12px;
+}
+
+.form-header-text {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--color-text-muted);
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.form-disclaimer {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  text-align: center;
+  margin-top: 16px;
+  line-height: 1.4;
+}
+
+/* ==========================================================================
+   STICKY TOP MARQUEE BANNER
+   ========================================================================== */
+
+.sticky-top-banner {
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: linear-gradient(90deg, var(--color-primary-dark) 0%, var(--color-primary) 50%, var(--color-primary-dark) 100%);
+  border-bottom: 2px solid var(--color-accent);
+  color: var(--color-text-white);
+  padding: 8px 0;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  font-family: var(--font-family-title);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+}
+
+.banner-marquee {
+  display: flex;
+  overflow: hidden;
+  user-select: none;
+  white-space: nowrap;
+}
+
+.marquee-content {
+  display: flex;
+  gap: 40px;
+  animation: marqueeScroll 25s linear infinite;
+}
+
+.marquee-content span {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+}
+
+@keyframes marqueeScroll {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
