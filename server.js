@@ -362,9 +362,10 @@ app.post('/api/leads', async (req, res) => {
       console.log(`[Demo Mode] Lead mocked and saved: ${orderNumber}`);
     }
 
-    // Build lead payload including email HTML
+    // Build lead payload including email HTML and subject
     const leadPayload = {
       ...savedLead,
+      email_subject: `🗳️ ¡Tu voz cuenta! Propuesta recibida (Orden ${savedLead.order_number})`,
       email_html: generateEmailHtml(savedLead)
     };
 
